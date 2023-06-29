@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jq</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+</head>
+    <style>
+        .box{
+            width: 300px;
+            height: 300px;
+            /* background-color: #ccc; */
+            border: 1px solid black;
+        }
+        .bg-pink{
+            background-color: #ffc1c1;
+        }
+    </style>
+<body>
+    <button type="button" id="myBtn" data-box="#myBox">mtBtn</button>
+    <br>
+    <hr>
+    <br>
+    <div class="box" id="myBox">
+
+    </div>
+
+
+    <script>
+        // bonding
+        console.log('myBtn',$('#myBtn'));
+        console.log('myBox',$('myBox'));
+
+       $('#myBtn').click(function(){
+            console.log('myBtn click');
+            console.log('this',this);
+            
+       });
+
+       
+    </script>
+</body>
+</html>

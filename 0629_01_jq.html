@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jq</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+</head>
+    <style>
+        .box{
+            width: 300px;
+            height: 300px;
+            /* background-color: #ccc; */
+            border: 1px solid black;
+        }
+        .bg-pink{
+            background-color: #ffc1c1;
+        }
+    </style>
+<body>
+    <button type="button" id="myBtn" data-box="#myBox">mtBtn</button>
+    <br>
+    <hr>
+    <br>
+    <div class="box" id="myBox">
+
+    </div>
+
+
+    <script>
+        // bonding
+        const myBtn = document.getElementById('myBtn');
+        const myBox = document.getElementById('myBox');
+        console.log('myBtn',myBtn);
+        console.log('myBox',myBox);
+
+        myBtn.addEventListener('click',function(){
+            console.log('click ok ');
+            console.log('this',this);
+            // ///////   先將 element 裡面的 attribute 指定給變數
+            let btnType = this.getAttribute('type');
+            let btnData = this.getAttribute('data-box');
+            
+            
+            console.log('btnType',btnType);
+            console.log('btnData',btnData);
+
+            // //////////   target 利用querySelector抓到目標 //////////////
+            // ///////// 利用querySelector將attribute的value值
+
+            let target = document.querySelector(btnData);
+            let type = document.querySelector(btnType);
+           
+
+
+            console.log('target',target);
+            console.log('type',type);
+
+            target.setAttribute('class','box bg-pink')
+            type.setAttribute('data-new','new')
+
+           
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jq_jq_jq</title>
+   
+</head>
+<style>
+    .box {
+        width: 300px;
+        height: 300px;
+        /* background-color: #ccc; */
+        border: 1px solid black;
+    }
+
+    .bg-pink {
+        background-color: #ffc1c1;
+    }
+</style>
+
+<body>
+    <button type="button" id="myBtn">myBtn</button>
+    <br>
+    <hr>
+    <br>
+    <h1 id="myH1">hello</h1>
+    <div class="box" id="myBox">
+    </div>
+
+
+    <!-- /////////// 載入 jquery ///////////// -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"
+        integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer">
+        </script>
+
+
+    <script>
+        // 原生 (有 JQ 盡量不使用原生)
+
+        // JQUERY =======> 有JQ 盡量不要用原生 
+        // JQUREY 放在 ready 內
+
+        $(document).ready(function () {
+
+            // /////////    綁定皆放在上面  /////////////////////
+            // //////////   綁定一次重複呼叫 ////////////////////
+            // //////////   綁定(等同於變數宣告)  //////////////
+            // //////////   建立寫code的好習慣  //////////////////
+
+            const myBox = $('#myBox');            
+            const myBtn = $('#myBtn');
+            const myH1 = $('#myH1');
+
+
+            // //////////// console.log , console.log , console.log , console.log ,
+
+            // console.log('myBtn',myBtn);
+            // console.log('myBox',myBox);
+            // console.log('myH1',myH1);
+            myBtn.click(function (e) { 
+                // e.preventDefault();
+                // console.log('click ok');
+                myBox.attr('class','box bg-pink');
+                myH1.text('55688'); 
+                // console.log( myBox.attr('class'));               
+            });
+        
+
+        });
+
+
+    </script>
+</body>
+
+</html>

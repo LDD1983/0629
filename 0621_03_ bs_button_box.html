@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <style>
+        .box {
+            width: 300px;
+            height: 300px;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-4 text-center">
+                <button type="button" class="btn btn-warning" data-target="#box1" data-color="bg-warning"
+                    data-text="#myP1">btn1</button>
+            </div>
+            <div class="col-4 text-center">
+                <button type="button" class="btn btn-danger" data-target="#box2" data-color="bg-danger"
+                    data-text="#myP2">btn2</button>
+            </div>
+            <div class="col-4 text-center">
+                <button type="button" class="btn btn-primary" data-target="#box3" data-color="bg-primary"
+                    data-text="#myP3">btn3</button>
+            </div>
+        </div>
+    </div>
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-4">
+                <div class="box mx-auto bg-dark" id="box1" data-now="bg-dark" data-num="6">
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="box mx-auto bg-dark" id="box2" data-now="bg-dark" data-num="7">
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="box mx-auto bg-dark" id="box3" data-now="bg-dark" data-num="8">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container mt-3">
+        <div class="row h1  ">
+            <div class="col-4 text-center">
+                <p id="myP1">6</p>
+            </div>
+            <div class="col-4 text-center">
+                <p id="myP2">7</p>
+            </div>
+            <div class="col-4 text-center">
+                <p id="myP3">8</p>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous">
+        </script>
+    <script>
+        ////////////////////  唯一綁定 btn ------> nodelist
+        const btn = document.querySelectorAll('.btn')
+        // console.log('btn', btn);
+
+
+        
+
+        btn.forEach(element => {
+
+            element.addEventListener('click', function () {
+                // console.log('click ok');
+                // console.log('click item',element);
+
+                // ////////////////////////////////////     把data-set 先抓到變數裡 ///////////////
+                // /////////DataTarget 取出 box id
+                let DataTarget = this.getAttribute('data-target');
+                // //////// dataColor  取出 bg-color
+                let dataColor = this.getAttribute('data-color');
+                // ////////// dataText 取出 myP id 
+                let dataText = this.getAttribute('data-text');
+                // console.log('dataText',dataText);                        
+
+                // console.log('btnOneTarget',btnOneTarget);
+                // console.log('btnTwoTarget',btnTwoTarget);
+                // console.log('dataColor',dataColor);
+
+                ////////////////////////////  button 綁定 box  ///////////////
+                ////////////////////////////  button 綁定 myP  ////////////
+                let TargetBox = document.querySelector(DataTarget)
+                let targetText = document.querySelector(dataText)
+
+                targetText.innerText = this.getAttribute('data-num')
+
+                // console.log('targetText',targetText);
+
+                // console.log('TargetBox',TargetBox);
+
+
+                // /////////////////////////////   方法二   /////////////
+                // /////////////////////          取得 data-now 的值作為判斷式
+                let dataNow = TargetBox.getAttribute('data-now');
+                // console.log('dataNow',dataNow);
+                // //////////////////////////////  練習二  /////////////////////
+                 // /////////////////////          取得 data-num 的值
+
+                let dataNum = TargetBox.getAttribute('data-num');
+                // console.log('dataNum',dataNum);
+
+
+                // /// 練習一 換顏色
+                ////// 方法一 判斷式 是否為原本顏色 bg-dark
+                //////  stack-overflow ==> classList.contains()
+                // if(TargetBox.classList.contains('bg-dark')){
+                //     TargetBox.setAttribute('class',`box ${dataColor} mx-auto rounded-3`) 
+                // }else{
+                //     TargetBox.setAttribute('class',`box bg-dark mx-auto rounded-3`) 
+                // } ;
+
+                /////////////  方法二 
+                /////////////  box 增加 data-now-color
+                if (dataNow == 'bg-dark') {
+                    TargetBox.setAttribute('class', `box ${dataColor} mx-auto rounded-3`)
+                    TargetBox.setAttribute('data-now', `${dataColor}`)
+
+                } else {
+                    TargetBox.setAttribute('class', `box bg-dark mx-auto rounded-3`)
+                    TargetBox.setAttribute('data-now', 'bg-dark')
+                }
+
+
+
+                // 練習二 計數器 data-num 庫存 按一次減少一次
+                let sum = Number(dataNum);
+                // console.log('sum', sum);
+                if (sum > 0) {
+                    sum--;
+                } else {
+                    sum = 0
+                }
+                targetText.innerText = sum;
+
+
+                // console.log('sum--', sum);
+                TargetBox.setAttribute('data-num', `${sum}`)
+            })
+        })
+
+    </script>
+</body>
+
+</html>
