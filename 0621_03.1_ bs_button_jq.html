@@ -82,7 +82,21 @@
 
             btns.each(function(){
                 $(this).click(function(){
-                    console.log('click ok');
+                    // console.log('click ok');
+                  let dataTarget = $(this).attr('data-target');
+                  let dataColor = $(this).attr('data-color');
+                //   console.log('dataTarget',dataTarget);
+                //   console.log('dataColor',dataColor);
+
+                  
+                  if($(dataTarget).attr('data-now')=='bg-dark'){
+                        $(dataTarget).attr('class',`box mx-auto ${dataColor}`);
+                        $(dataTarget).attr('data-now',dataColor);
+                  }else{
+                    $(dataTarget).attr('class',`box mx-auto bg-dark`);
+                    $(dataTarget).attr('data-now','bg-dark');
+                  }
+
                 })
             })
 
